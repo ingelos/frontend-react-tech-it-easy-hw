@@ -1,10 +1,9 @@
-import {inventory} from '../constants/inventory.js';
 
 
-function toSellProducts () {
+function toSellProducts (tv) {
     let toSellTvs = 0;
-    for (let i = 0; i < inventory.length; i++) {
-        toSellTvs += inventory[i].originalStock - inventory[i].sold;
+    for (let i = 0; i < tv.length; i++) {
+        toSellTvs += tv[i].originalStock - tv[i].sold;
     }
     return toSellTvs;
 }

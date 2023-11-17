@@ -1,4 +1,6 @@
 // BEST VERKOPENDE TV
+
+
 export const bestSellingTv = {
     type: 'UHD 55AU7040',
     name: 'Crystal',
@@ -327,5 +329,68 @@ export let inventory = [
         sold: 8,
     },
 ];
+
+
+// Opdracht 1.a //
+
+const tvTypes = inventory.map((tv) => {
+    return tv.type;
+});
+
+console.log(tvTypes);
+
+
+// Opdracht 1.b //
+
+const tvSoldOut = inventory.filter((tv) => {
+    return  tv.sold === tv.originalStock;
+})
+
+console.log(tvSoldOut);
+
+
+// Opdracht 1.c //
+
+const tvSpecific = inventory.find((tv) => {
+    return tv.type === 'NH3216SMART';
+})
+
+console.log(tvSpecific);
+
+
+// Opdracht 1.d //
+
+const tvSuitableForSport = inventory.map((tv) => {
+    if (tv.refreshRate >= 100) {
+        return 'name: ' + tv.brand + ' ' + tv.name + ', ' + 'suitable: true';
+    } else {
+        return 'name: ' + tv.brand + ' ' + tv.name + ', ' + 'suitable: false';
+    }
+})
+
+console.log(tvSuitableForSport);
+
+// Opdracht 1.e //
+
+const screenOver65inch = inventory.filter((tv) => {
+    return tv.availableSizes.find((size) => {
+        return size >= 65;
+    });
+})
+
+console.log(screenOver65inch);
+
+
+// Opdracht 1.f //
+
+const tvWithAmbiLight = inventory.filter((tv) => {
+    const ambiLightYes = tv.options.find((option) => {
+        return option.name === "ambiLight";
+    })
+    return ambiLightYes.applicable === true;
+    });
+
+
+console.log(tvWithAmbiLight);
 
 

@@ -2,67 +2,137 @@ import './App.css';
 import soldProducts from "./helpers/soldProducts.js";
 import boughtProducts from "./helpers/boughtProducts.js";
 import toSellProducts from "./helpers/toSellProducts.js";
-import productInformation, {priceInformation, screenSize, sourceImage} from "./helpers/productInformation.js";
+import nameInformation from "./helpers/nameInformation.js";
+import priceInformation from "./helpers/priceInformation.js";
+import screenSizeInformation from "./helpers/screenSizeInformation.js";
+import sourceImage from "./helpers/showImage.js";
 import check from "./assets/check.png";
 import minus from "./assets/minus.png";
+import {bestSellingTv} from "./constants/inventory.js";
+import {inventory} from "./constants/inventory.js";
+
+
 
 function App() {
-    function mostSoldFirst() {
-        console.log('Meest verkocht eerst')
+
+    function sortMostSoldToLeastSold() {
+        inventory.sort((a, b) => {
+            return a.sold - b.sold;
+        });
+
+    console.log(inventory);
     }
 
-    function cheapestFirst() {
-        console.log('Goedkoopste eerst')
+    function sortCheapestFirst() {
+        inventory.sort((a, b) => {
+            return a.price - b.price;
+        });
+
+    console.log(inventory);
     }
 
-    function mostSuitedForSport() {
-        console.log('Meest geschikt voor sport')
+    function sortMostSuitedForSport() {
+        inventory.sort((a, b) => {
+            return b.refreshRate - a.refreshRate;
+        });
+
+        console.log(inventory);
     }
+
+    function sortBiggestScreenFirst() {
+
+           inventory.sort((a, b) => {
+               return b.availableSizes.slice(-1) - a.availableSizes.slice(-1);
+       });
+        console.log(inventory);
+    }
+
+
 
     return (
         <>
-            <main className={"main-container"}>
+            <main className="main-container">
                 <h1>Tech it easy dashboard</h1>
+
                 <h2>Verkoopoverzicht</h2>
-                <section className={"verkoopoverzicht"}>
-                    <div className={"overzicht verkochte-tvs"}>
+                <section className="verkoopoverzicht">
+                    <article className="overzicht verkochte-tvs">
                         <h3>Aantal verkochte producten</h3>
-                        <p>{soldProducts()}</p>
-                    </div>
-                    <div className={"overzicht ingekochte-tvs"}>
+                        <p>{soldProducts(inventory)}</p>
+                    </article>
+                    <article className="overzicht ingekochte-tvs">
                         <h3>Aantal ingekochte producten</h3>
-                        <p>{boughtProducts()}</p>
-                    </div>
-                    <div className={"overzicht te-verkopen-tvs"}>
+                        <p>{boughtProducts(inventory)}</p>
+                    </article>
+                    <article className="overzicht te-verkopen-tvs">
                         <h3>Aantal te verkopen producten</h3>
-                        <p>{toSellProducts()}</p>
-                    </div>
+                        <p>{toSellProducts(inventory)}</p>
+                    </article>
                 </section>
+
+                <h3>Alle merken</h3>
+                <ul className="brand-overview">
+                    {inventory.map((tv) => {
+                        return <li key={`merken-${tv.name}`}>{tv.brand}</li>
+                    })}
+                </ul>
+
                 <h2>Best verkochte tv</h2>
-                <section className={"bestselling-tv-outer-container"}>
-                    <div className={"bestselling-tv-inner-container"}>
-                        <div className={"bestselling-tv-img-container"}>
-                            <img id={"bestselling-tv-img"} src={sourceImage()} alt={"tv"}/>
+                <section className="bestselling outer-container">
+                    <article className="bestselling-tv inner-container">
+                        <div className="tv-img-container">
+                            <img id="tv-img" src={sourceImage(bestSellingTv)} alt={"afbeelding tv"}/>
                         </div>
-                        <div className={"product-information"}>
-                            <p id={"name"}>{productInformation()}</p>
-                            <p id={"price"}>{priceInformation()}</p>
-                            <p>{screenSize()}</p>
-                            <span className={"logo"}><img src={check}/>wifi</span>
-                            <span className={"logo"}><img src={minus}/>speech</span>
-                            <span className={"logo"}><img src={check}/>hdr</span>
-                            <span className={"logo"}><img src={check}/>bluetooth</span>
-                            <span className={"logo"}><img src={minus}/>ambiLight</span>
+                        <div className="product-information">
+                            <h3 id="name">{nameInformation(bestSellingTv)}</h3>
+                            <p id="price">{priceInformation(bestSellingTv)}</p>
+                            <p id="screensize">{screenSizeInformation(bestSellingTv)}</p>
+                            <ul className="options-list">
+                                <li><img src={check} alt="Icoon: aanwezig" className="icon"/>wifi</li>
+                                <li><img src={minus} alt="Icoon: niet aanwezig" className="icon"/>speech</li>
+                                <li><img src={check} alt="Icoon: aanwezig" className="icon"/>hdr</li>
+                                <li><img src={check} alt="Icoon: aanwezig" className="icon"/>bluetooth</li>
+                                <li><img src={minus} alt="Icoon: niet aanwezig" className="icon"/>ambiLight</li>
+                            </ul>
                         </div>
-                    </div>
+                    </article>
                 </section>
-                <section className={"all-tvs"}>
+
+                <section className="all-tvs">
                     <h2>Alle Tvs</h2>
-                    <div className={"button-section"}>
-                        <button type={"button"} onClick={mostSoldFirst}>Meest verkocht eerst</button>
-                        <button type={"button"} onClick={cheapestFirst}>Goedkoopste eerst</button>
-                        <button type={"button"} onClick={mostSuitedForSport}>Meest geschikt voor sport eerst</button>
+                    <div className="button-section">
+                        <button type="button" onClick={sortMostSoldToLeastSold}>Meest verkocht eerst</button>
+                        <button type="button" onClick={sortCheapestFirst}>Goedkoopste eerst</button>
+                        <button type="button" onClick={sortMostSuitedForSport}>Meest geschikt voor sport eerst</button>
+                        <button type="button" onClick={sortBiggestScreenFirst}>Grootste scherm eerst</button>
                     </div>
+
+                    {inventory.map((tv) => {
+                        return (
+                            <article className="all-tvs outer-container" key={tv.type}>
+                                <div className="all-tvs inner-container">
+                                    <div className="tv-img-container">
+                                        <img id="tv-img" src={tv.sourceImg} alt="afbeelding tv"/>
+                                    </div>
+                                    <div className="product-information">
+                                        <h3>{nameInformation(tv)}</h3>
+                                        <p id="price">{priceInformation(tv)}</p>
+                                        <p>{screenSizeInformation(tv)}</p>
+                                        <ul className="options-list">
+                                            {tv.options.map((option) => {
+                                                if (option.applicable === true) {
+                                                    return <li key={`${tv.type}-${option.name}`}><img src={check} alt="Icoon: aanwezig" className="icon"/>{option.name}
+                                                    </li>
+                                                } else {
+                                                    return <li key={`${tv.type}-${option.name}`}><img src={minus} alt="Icoon: niet aanwezig" className="icon"/>{option.name}
+                                                    </li>
+                                                    }
+                                            })}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </article>)
+                    })}
                 </section>
             </main>
         </>
