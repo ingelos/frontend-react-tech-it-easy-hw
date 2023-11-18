@@ -17,7 +17,7 @@ function App() {
 
     function sortMostSoldToLeastSold() {
         inventory.sort((a, b) => {
-            return a.sold - b.sold;
+            return b.sold - a.sold;
         });
 
     console.log(inventory);
@@ -39,8 +39,9 @@ function App() {
         console.log(inventory);
     }
 
-    function sortBiggestScreenFirst() {
+    // Bonusopdracht 1: //
 
+    function sortBiggestScreenFirst() {
            inventory.sort((a, b) => {
                return b.availableSizes.slice(-1) - a.availableSizes.slice(-1);
        });
@@ -73,7 +74,7 @@ function App() {
                 <h3>Alle merken</h3>
                 <ul className="brand-overview">
                     {inventory.map((tv) => {
-                        return <li key={`merken-${tv.name}`}>{tv.brand}</li>
+                        return <li key={`brands-${tv.name}`}>{tv.brand}</li>
                     })}
                 </ul>
 
@@ -88,11 +89,11 @@ function App() {
                             <p id="price">{priceInformation(bestSellingTv)}</p>
                             <p id="screensize">{screenSizeInformation(bestSellingTv)}</p>
                             <ul className="options-list">
-                                <li><img src={check} alt="Icoon: aanwezig" className="icon"/>wifi</li>
-                                <li><img src={minus} alt="Icoon: niet aanwezig" className="icon"/>speech</li>
-                                <li><img src={check} alt="Icoon: aanwezig" className="icon"/>hdr</li>
-                                <li><img src={check} alt="Icoon: aanwezig" className="icon"/>bluetooth</li>
-                                <li><img src={minus} alt="Icoon: niet aanwezig" className="icon"/>ambiLight</li>
+                                <li><img src={check} alt="Check icoon" className="icon"/>wifi</li>
+                                <li><img src={minus} alt="Minus icoon" className="icon"/>speech</li>
+                                <li><img src={check} alt="Check icoon" className="icon"/>hdr</li>
+                                <li><img src={check} alt="Check icoon" className="icon"/>bluetooth</li>
+                                <li><img src={minus} alt="Check icoon" className="icon"/>ambiLight</li>
                             </ul>
                         </div>
                     </article>
@@ -121,10 +122,10 @@ function App() {
                                         <ul className="options-list">
                                             {tv.options.map((option) => {
                                                 if (option.applicable === true) {
-                                                    return <li key={`${tv.type}-${option.name}`}><img src={check} alt="Icoon: aanwezig" className="icon"/>{option.name}
+                                                    return <li key={`${tv.type}-${option.name}`}><img src={check} alt="check icoon" className="icon"/>{option.name}
                                                     </li>
                                                 } else {
-                                                    return <li key={`${tv.type}-${option.name}`}><img src={minus} alt="Icoon: niet aanwezig" className="icon"/>{option.name}
+                                                    return <li key={`${tv.type}-${option.name}`}><img src={minus} alt="minus icoon" className="icon"/>{option.name}
                                                     </li>
                                                     }
                                             })}
