@@ -107,7 +107,6 @@ function App() {
                         <button type="button" onClick={sortMostSuitedForSport}>Meest geschikt voor sport eerst</button>
                         <button type="button" onClick={sortBiggestScreenFirst}>Grootste scherm eerst</button>
                     </div>
-
                     {inventory.map((tv) => {
                         return (
                             <article className="all-tvs outer-container" key={tv.type}>
