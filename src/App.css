@@ -9,7 +9,7 @@ h1 {
     font-size: 40px;
 }
 
-.verkoopoverzicht {
+.sale-overview {
     display: flex;
     flex-direction: row;
     max-width: 1000px;
@@ -17,7 +17,7 @@ h1 {
     justify-content: space-between;
 }
 
-.overzicht {
+.overview {
     flex-basis: 250px;
     flex-grow: 0;
     flex-shrink: 0;
@@ -25,39 +25,39 @@ h1 {
     border-radius: 5px;
 }
 
-.overzicht h3 {
+.overview h3 {
     padding: 20px;
     font-size: 20px;
 }
 
-.overzicht p {
+.overview p {
     font-size: 25px;
 }
 
-.verkochte-tvs {
+.sold-tvs {
     border: 1px solid lightseagreen;
     background: rgba(70, 170, 150, .1);
 }
 
-.verkochte-tvs h3, .verkochte-tvs p {
+.sold-tvs h3, .sold-tvs p {
     color: rgba(70, 170, 150);
 }
 
-.ingekochte-tvs {
+.bought-tvs {
     border: 1px solid midnightblue;
     background: rgba(75, 120, 150, .1);
 }
 
-.ingekochte-tvs h3, .ingekochte-tvs p {
+.bought-tvs h3, .bought-tvs p {
     color: rgba(75, 120, 150);
 }
 
-.te-verkopen-tvs {
+.to-sell-tvs {
     border: 1px solid red;
     background: rgba(225, 40, 50, .1);
 }
 
-.te-verkopen-tvs h3, .te-verkopen-tvs p {
+.to-sell-tvs h3, .to-sell-tvs p {
     color: rgba(225, 40, 50);
 }
 

@@ -56,16 +56,16 @@ function App() {
                 <h1>Tech it easy dashboard</h1>
 
                 <h2>Verkoopoverzicht</h2>
-                <section className="verkoopoverzicht">
-                    <article className="overzicht verkochte-tvs">
+                <section className="sale-overview">
+                    <article className="overview sold-tvs">
                         <h3>Aantal verkochte producten</h3>
                         <p>{soldProducts(inventory)}</p>
                     </article>
-                    <article className="overzicht ingekochte-tvs">
+                    <article className="overview bought-tvs">
                         <h3>Aantal ingekochte producten</h3>
                         <p>{boughtProducts(inventory)}</p>
                     </article>
-                    <article className="overzicht te-verkopen-tvs">
+                    <article className="overview to-sell-tvs">
                         <h3>Aantal te verkopen producten</h3>
                         <p>{toSellProducts(inventory)}</p>
                     </article>
