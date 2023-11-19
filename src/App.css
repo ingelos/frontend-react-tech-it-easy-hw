@@ -1,0 +1,139 @@
+
+.main-container {
+    max-width: 1200px;
+    margin: 40px;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+.verkoopoverzicht {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    flex-grow: 0;
+    justify-content: space-between;
+}
+
+.overzicht {
+    flex-basis: 250px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.overzicht h3 {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.overzicht p {
+    font-size: 25px;
+}
+
+.verkochte-tvs {
+    border: 1px solid lightseagreen;
+    background: rgba(70, 170, 150, .1);
+}
+
+.verkochte-tvs h3, .verkochte-tvs p {
+    color: rgba(70, 170, 150);
+}
+
+.ingekochte-tvs {
+    border: 1px solid midnightblue;
+    background: rgba(75, 120, 150, .1);
+}
+
+.ingekochte-tvs h3, .ingekochte-tvs p {
+    color: rgba(75, 120, 150);
+}
+
+.te-verkopen-tvs {
+    border: 1px solid red;
+    background: rgba(225, 40, 50, .1);
+}
+
+.te-verkopen-tvs h3, .te-verkopen-tvs p {
+    color: rgba(225, 40, 50);
+}
+
+.brand-overview {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.outer-container {
+    display: flex;
+    flex-basis: 1000px;
+    flex-grow: 0;
+}
+
+.bestselling-tv {
+    border: 1px dashed black;
+    background: rgba(50, 50, 50, .1);
+    border-radius: 5px;
+    min-width: 600px;
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 1000px;
+    flex-grow: 0;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+.tv-img-container {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 225px;
+    align-items: center;
+    padding: 0 30px;
+}
+
+#tv-img {
+    width: 100%;
+}
+
+.product-information {
+    flex-direction: column;
+    flex-basis: 550px;
+}
+
+.product-information h3 {
+    font-size: 20px;
+}
+
+.icon {
+    width: 10px;
+    margin: 0 5px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.product-information #price {
+    font-size: 25px;
+}
+
+.button-section {
+    display: flex;
+    margin: 15px 0;
+    column-gap: 5px;
+}
+
